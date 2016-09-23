@@ -1,0 +1,105 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<link rel="icon" href="images/geren.png" type="image/x-icon" />
+<title>屠艳作品</title>
+<style>
+*{
+	margin:0;
+	padding:0;
+}
+body{
+	width:100%;
+	height:667px;
+	background:url(images/shoufengqin.jpg) no-repeat;
+	background-size:100% 100%;
+	overflow:hidden;
+	
+}
+#sfq{
+	width:900px;
+	height:500px;
+	border:1px solid red;
+	margin:60px auto;
+	overflow:hidden;
+	position:relative;
+}
+#sfq span{
+	width:30px;
+	height:350px;
+	padding-top:150px;
+	font-size:25px;
+	color:#fff;
+	cursor:pointer;
+	display:block;
+	position:absolute;
+	left:0;
+	top:0;
+}
+#sfq div{
+	position:absolute;
+	left:0;
+	top:0;
+	background:#ccc;
+	width:800px;
+	height:500px;
+}
+#sfq div img{
+	width:100%;
+	height:100%;
+}
+
+</style>
+<script src="js/move.js"></script>
+<script>
+
+	function rnd(n,m){
+		return parseInt(Math.random()*(m-n)+n);	
+	}
+	
+	window.onload = function(){
+		var oSfq = document.getElementById('sfq');	
+		var aDiv = oSfq.children;
+		
+		oSfq.style.width = 800+30*(aDiv.length-1)+'px';
+		
+		for(var i=0;i<aDiv.length;i++){
+			var oSpan = document.createElement('span');
+			oSpan.innerHTML = '第'+(i+1)+'个侧边栏';
+			oSpan.style.background = 'rgb('+rnd(0,256)+','+rnd(0,256)+','+rnd(0,256)+')';
+			aDiv[i].appendChild(oSpan);
+		}
+		for(var i=1;i<aDiv.length;i++){
+			aDiv[i].style.left = 800+(i-1)*30+'px';	
+		}
+		
+		for(var i=0;i<aDiv.length;i++){
+			(function(index){
+				aDiv[i].onmouseover = function(){
+					for(var i=0;i<aDiv.length;i++){
+						if(i<=index){
+							move(aDiv[i],{'left':30*i},{'duration':400,easing:Tween.Linear});	
+						}else{
+							move(aDiv[i],{'left':800+(i-1)*30},{'duration':400,easing:Tween.Linear});	
+						}	
+					}
+				};	
+				
+			})(i);	
+			
+		}
+	};
+
+</script>
+</head>
+
+<body>
+	<div id="sfq">
+    	<div><img src="images/bingyikeji.png"></div>
+        <div><img src="images/meilishuo.png"></div>
+        <div><img src="images/aiqiyi.png"></div>
+       	<div><img src="images/taobao.png"></div>
+    </div>
+</body>
+</html>

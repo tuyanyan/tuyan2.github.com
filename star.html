@@ -1,0 +1,84 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<link rel="icon" href="images/geren.png" type="image/x-icon" />
+<title>屠艳作品</title>
+</head>
+<style>
+body{
+	width:100%;
+	height:667px;
+	background:url(images/shoufengqin.jpg) no-repeat;
+	background-size:100% 100%;
+	overflow:hidden;
+	
+}
+canvas{
+	background:#1E1F1C;
+	margin-left:350px;
+	margin-top:20px;
+	border-radius:70px;
+}
+</style>
+<script>
+	window.onload=function  () {
+		 var canvas=document.getElementById("canvas");
+		 var cobj=canvas.getContext("2d");
+		 var starArr=[];
+		 for (var i=0; i<30; i++) {
+			  var starObj={
+			  radius1:20+10*Math.random(),radius2:8+7*Math.random(),x:30+(canvas.width-60)*Math.random(),y:30+(canvas.height-60)*Math.random(),num:Math.ceil(4+4*Math.random()),color:"rgb("+parseInt(255*Math.random())+","+parseInt(255*Math.random())+","+parseInt(255*Math.random())+")",angle:360*Math.random(),changeAngle:-5+10*Math.random()
+		  }
+		  starArr.push(starObj);
+		 }
+		  setInterval(function  () {
+			cobj.clearRect(0,0,600,600);
+			for (var i=0; i<starArr.length; i++) {
+				starArr[i].angle+=starArr[i].changeAngle;
+				cobj.save();
+				cobj.beginPath();
+				cobj.translate(starArr[i].x,starArr[i].y);
+				cobj.rotate(starArr[i].angle*Math.PI/180);
+				cobj.scale(Math.sin(starArr[i].angle*Math.PI/180),Math.sin(starArr[i].angle*Math.PI/180))
+				cobj.globalAlpha=Math.abs(Math.sin(starArr[i].angle*Math.PI/180));
+				drawStar (0,0,starArr[i].radius1,starArr[i].radius2,starArr[i].num,"fill",starArr[i].color);
+				cobj.restore();
+			}
+		  },60)
+		 
+		 function drawStar (x,y,radius1,radius2,num,drawType,color) {
+				var angle=360/(num*2);
+				var arr=[];
+				for (var i=0; i<num*2; i++) {
+					 var starObj={};
+					  if(i%2==0){
+						  starObj.x=x+radius1*Math.cos(i*angle*Math.PI/180);
+						  starObj.y=y+radius1*Math.sin(i*angle*Math.PI/180);
+					  }else{
+						   starObj.x=x+radius2*Math.cos(i*angle*Math.PI/180);
+						   starObj.y=y+radius2*Math.sin(i*angle*Math.PI/180);
+					  }
+				  arr.push(starObj);
+				}
+				cobj.beginPath();
+				cobj.fillStyle=color;
+				cobj.strokeStyle=color;
+				cobj.moveTo(arr[0].x,arr[0].y);
+				for (var i=1; i<arr.length; i++) {
+					cobj.lineTo(arr[i].x,arr[i].y);
+				}
+				cobj.closePath();
+				if(drawType=="fill"){
+					cobj.fill();
+				}else{
+					obj.stroke();
+				}
+		}
+	}
+</script>
+
+<body>
+	<canvas id="canvas" width=600 height=600></canvas>
+</body>
+</html>

@@ -1,0 +1,203 @@
+@charset "utf-8";
+/* CSS Document */
+body,div,ul,ol,li,form,input,textarea,p{
+	margin:0;padding:0;
+}
+body{
+	font-size: 12px;font-family: "Microsoft YaHei","微软雅黑","SimSun","宋体";
+}
+img{
+	border:0;
+}
+ol,ul{
+	list-style:none;
+}
+
+/*loading*/
+
+@-webkit-keyframes zhuan{
+	0%{-webkit-transform:rotate(0deg)}
+	100%{-webkit-transform:rotate(360deg)}
+}
+@keyframes zhuan{
+	0%{transform:rotate(0deg)}
+	100%{transform:rotate(360deg)}
+}
+
+@-webkit-keyframes loading{
+	0%{color:red;top: -3px;}
+	100%{color: yellow;top: 3px;}
+}
+@keyframes loading{
+	0%{color:red;top: -3px;}
+	100%{color: yellow;top: 3px;}	
+}
+@-webkit-keyframes haha{
+	from{box-shadow: 1px 1px 1px #000;-webkit-transform:rotate(-2deg);}
+	to{box-shadow: 1px 1px 30px yellow , 1px 1px 60px greenyellow , 1px 1px 90px yellowgreen;-webkit-transform:rotate(2deg);}
+}
+@keyframes haha{
+	from{box-shadow: 1px 1px 1px #000;transform:rotate(-2deg);}
+	to{box-shadow: 1px 1px 30px yellow , 1px 1px 60px greenyellow , 1px 1px 90px yellowgreen;transform:rotate(2deg);}
+}
+@-webkit-keyframes xixi{
+	from{-webkit-transform:translateY(-5px);}	
+	to{-webkit-transform:translateY(5px);}
+}
+@keyframes xixi{
+	form{transform:translateY(-5px);}
+	to{transform:translateY(5px);}	
+}
+@-webkit-keyframes rocket{
+	from{top: 700px;}
+	to{top: -600px;}
+}
+@keyframes rocket{
+	from{top: 700px;}
+	to{top: -600px;}
+}
+
+.load_txt{
+	position:absolute;
+	left:50%;
+	top:65%;
+	width:210px;	
+	text-align:center;
+	margin-left:-105px;
+	font-size:30px;
+	color:#fff;
+}
+#loading{
+	position:absolute;
+	left:0;
+	top:0;
+	width:100%;
+	height:100%;
+	background:#000;
+	z-index:9999;
+}
+#loading div{
+	position:absolute;
+	left:50%;
+	top:50%;
+	margin-left:-105px;
+	margin-top:-150px;
+	height:210px;
+	width:210px;
+	background:url(../images/loading.png) no-repeat;
+	-webkit-animation:zhuan 2s linear infinite;
+	animation:zhuan 2s linear infinite;
+}
+
+#loading p{
+	position:absolute;
+	left:50%;
+	top:50%;
+	width:146px;
+	height:146px;
+	margin:-73px 0 0 -73px;
+	color:#fff;
+	font-size:30px;
+	text-align:center;
+	line-height:30px;
+}
+#loading p span{
+	float:right;
+	color:red;
+	position:relative;
+}
+#loading p span:nth-child(1){
+	-webkit-animation:loading 1s ease 0s infinite alternate;
+	animation:loading 1s ease 0s infinite alternate;
+}
+#loading p span:nth-child(2){
+	-webkit-animation:loading 1s ease 0.2s infinite alternate;
+	animation:loading 1s ease 0.2s infinite alternate;
+}
+#loading p span:nth-child(3){
+	-webkit-animation:loading 1s ease 0.4s infinite alternate;
+	animation:loading 1s ease 0.4s infinite alternate;
+}
+#loading strong{
+	position:absolute;
+	left:50%;
+	top:50%;
+	margin:-20px 0 0 -225px;
+	color:#fff;
+	font-size:30px;
+}
+html,body{
+	width:100%;
+	height:100px;
+	background:#50A8D6;
+	overflow:hidden;
+}
+#banner li{
+	position:absolute;
+	width:100%;
+	height:800px;
+	background:url(../images/1.jpg) no-repeat;
+	opacity:0;
+	background-size:100% 100% !important;
+}
+#banner li.no2{
+	background:url(../images/2.jpg) no-repeat;
+}
+#banner li.no3{
+	background:url(../images/3.jpg) no-repeat;
+}
+#banner li.no4{
+	background:url(../images/4.jpg) no-repeat;
+}
+#banner li.no5{
+	background:url(../images/5.jpg) no-repeat;
+}
+#banner li.no6{
+	background:url(../images/6.jpg) no-repeat;
+}
+
+.btn{
+	position:absolute;
+	top:547px;
+	left:50%;
+	width:180px;
+	height:60px;
+	margin-left:-90px;
+	background:url(../images/paopao.png) top left,-webkit-linear-gradient(top,#E7E6AC,#90C871);
+	background:url(../images/paopao.png) top left,-moz-linear-gradient(top,#E7E6AC,#90C871);
+	background:url(../images/paopao.png) top left,-mz-linear-gradient(top,#E7E6AC,#90C871);
+	-webkit-transition:all 1s ease 0s;
+	transition:all 1s ease 0s;
+	border-radius:15px;
+	box-shadow:1px 1px 3px #000; 
+	-webkit-animation:haha 1s linear 0s infinite alternate;
+	animation:haha 1s linear 0s infinite alternate;
+}
+.btn:hover{
+	-webkit-animation:xixi 1s ease 0s infinite alternate;
+	animation:xixi 1s ease 0s infinite alternate;
+	background-position:bottom left;
+}
+.btn a{
+	display:block;
+	width:180px;
+	height:60px;
+}
+.btn a:link,.btn a:visited{
+	font:18px/60px "微软雅黑","宋体";
+	color: #0080FF;
+	text-align: center;
+	text-decoration: none;
+}
+.btn a:hover{
+	color: green;
+}
+
+
+#color_plus span{
+	position:absolute;
+	left:0;
+	top:0;
+	font-size:12px;
+	font-weight:bold;
+}
